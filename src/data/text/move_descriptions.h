@@ -47,7 +47,7 @@ static const u8 sViceGripDescription[] = _(
 
 static const u8 sGuillotineDescription[] = _(
     "A powerful pincer attack\n"
-    "that may cause fainting.");
+    "that may raise ATTACK.");
 
 static const u8 sRazorWindDescription[] = _(
     "A 2-turn move that strikes\n"
@@ -126,8 +126,8 @@ static const u8 sFuryAttackDescription[] = _(
     "with sharp horns, etc.");
 
 static const u8 sHornDrillDescription[] = _(
-    "A one-hit KO attack that\n"
-    "uses a horn like a drill.");
+    "A drilling attack that\n"
+    "may cause flinching.");
 
 static const u8 sTackleDescription[] = _(
     "Charges the foe with a full-\n"
@@ -166,8 +166,8 @@ static const u8 sTwineedleDescription[] = _(
     "jab the foe twice.");
 
 static const u8 sPinMissileDescription[] = _(
-    "Sharp pins are fired to\n"
-    "strike 2 to 5 times.");
+    "A sharp pin are fired to\n"
+    "strike. may Paralyze.");
 
 static const u8 sLeerDescription[] = _(
     "Frightens the foe with a\n"
@@ -327,7 +327,7 @@ static const u8 sStringShotDescription[] = _(
 
 static const u8 sDragonRageDescription[] = _(
     "Launches shock waves that\n"
-    "always inflict 40 HP damage.");
+    "always strike first.");
 
 static const u8 sFireSpinDescription[] = _(
     "Traps the foe in a ring of\n"
@@ -358,8 +358,8 @@ static const u8 sEarthquakeDescription[] = _(
     "no effect on flying foes.");
 
 static const u8 sFissureDescription[] = _(
-    "A one-hit KO move that\n"
-    "drops the foe in a fissure.");
+    "Opens a fissure, dropping\n"
+    "both user and foe into it.");
 
 static const u8 sDigDescription[] = _(
     "Digs underground the first\n"
@@ -558,8 +558,8 @@ static const u8 sPoisonGasDescription[] = _(
     "gas that may poison.");
 
 static const u8 sBarrageDescription[] = _(
-    "Hurls round objects at the\n"
-    "foe 2 to 5 times.");
+    "Hurls 2 round objects at\n"
+    "the foe.");
 
 static const u8 sLeechLifeDescription[] = _(
     "An attack that steals half\n"
@@ -1166,8 +1166,8 @@ static const u8 sDiveDescription[] = _(
     "turn and strikes next turn.");
 
 static const u8 sArmThrustDescription[] = _(
-    "Straight-arm punches that\n"
-    "strike the foe 2 to 5 times.");
+    "A devastating thrust that\n"
+    "never fails to connect.");
 
 static const u8 sCamouflageDescription[] = _(
     "Alters the POKéMON's type\n"
@@ -1315,7 +1315,7 @@ static const u8 sSandTombDescription[] = _(
 
 static const u8 sSheerColdDescription[] = _(
     "A chilling attack that\n"
-    "causes fainting if it hits.");
+    "always freezes if it hits.");
 
 static const u8 sMuddyWaterDescription[] = _(
     "Attacks with muddy water.\n"

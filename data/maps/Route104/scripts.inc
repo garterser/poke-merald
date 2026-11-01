@@ -981,6 +981,26 @@ Route104_EventScript_Darian::
 	msgbox Route104_Text_DarianPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route104_EventScript_CelebiStone::
+	lockall
+	msgbox Route104_Text_CelebiConfirm, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route104_EventScript_CelebiRefuse
+	setwildbattle SPECIES_CELEBI, 55
+	dowildbattle
+	setflag FLAG_CELEBI
+	removeobject VAR_LAST_TALKED
+	releaseall
+	end
+
+Route104_EventScript_CelebiRefuse::
+	releaseall
+	end
+
+
+Route104_Text_CelebiConfirm:
+	.string "A CLOCK is engraved on the stone.\n"
+	.string "Touch it?$"
+
 Route104_Text_BrineyLivesInSeasideCottage:
 	.string "That seaside cottage is where\n"
 	.string "MR. BRINEY lives.\p"
@@ -1020,10 +1040,8 @@ Route104_Text_LikeFillingMouthWithSeedsTakeThis:
 
 Route104_Text_TMsAreOneTimeUse:
 	.string "A word of advice!\p"
-	.string "A TM, TECHNICAL MACHINE, is good only\n"
-	.string "for one-time use.\p"
-	.string "Once you use it, it's gone.\n"
-	.string "Think twice before using it!$"
+	.string "A TM, TECHNICAL MACHINE, is reusable\p"
+	.string "Don't be afraid to use it!$"
 
 Route104_Text_DontNeedThisTakeIt:
 	.string "This FLOWER SHOP started selling\n"

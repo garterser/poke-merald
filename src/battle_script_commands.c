@@ -1150,7 +1150,9 @@ static void Cmd_accuracycheck(void)
         calc /= sAccuracyStageRatios[buff].divisor;
 
         if (gBattleMons[gBattlerAttacker].ability == ABILITY_COMPOUND_EYES)
-            calc = (calc * 130) / 100; // 1.3 compound eyes boost
+            calc = (calc + 30); // 30 compound eyes boost
+        if (gBattleMons[gBattlerAttacker].ability == ABILITY_ILLUMINATE)
+            calc = (calc + 20); // 20 illuminate boost
         if (WEATHER_HAS_EFFECT && gBattleMons[gBattlerTarget].ability == ABILITY_SAND_VEIL && gBattleWeather & B_WEATHER_SANDSTORM)
             calc = (calc * 80) / 100; // 1.2 sand veil loss
         if (gBattleMons[gBattlerAttacker].ability == ABILITY_HUSTLE && IS_TYPE_PHYSICAL(type))
@@ -1269,6 +1271,7 @@ static void Cmd_critcalc(void)
                 + (gBattleMoves[gCurrentMove].effect == EFFECT_SKY_ATTACK)
                 + (gBattleMoves[gCurrentMove].effect == EFFECT_BLAZE_KICK)
                 + (gBattleMoves[gCurrentMove].effect == EFFECT_POISON_TAIL)
+                + (gBattleMons[gBattlerAttacker].ability == ABILITY_VITAL_SPIRIT)
                 + (holdEffect == HOLD_EFFECT_SCOPE_LENS)
                 + 2 * (holdEffect == HOLD_EFFECT_LUCKY_PUNCH && gBattleMons[gBattlerAttacker].species == SPECIES_CHANSEY)
                 + 2 * (holdEffect == HOLD_EFFECT_STICK && gBattleMons[gBattlerAttacker].species == SPECIES_FARFETCHD);
@@ -1276,7 +1279,7 @@ static void Cmd_critcalc(void)
     if (critChance >= ARRAY_COUNT(sCriticalHitChance))
         critChance = ARRAY_COUNT(sCriticalHitChance) - 1;
 
-    if ((gBattleMons[gBattlerTarget].ability != ABILITY_BATTLE_ARMOR && gBattleMons[gBattlerTarget].ability != ABILITY_SHELL_ARMOR)
+    if ((gBattleMons[gBattlerTarget].ability != ABILITY_BATTLE_ARMOR)
      && !(gStatuses3[gBattlerAttacker] & STATUS3_CANT_SCORE_A_CRIT)
      && !(gBattleTypeFlags & (BATTLE_TYPE_WALLY_TUTORIAL | BATTLE_TYPE_FIRST_BATTLE))
      && !(Random() % sCriticalHitChance[critChance]))
@@ -2287,8 +2290,6 @@ void SetMoveEffect(bool8 primary, u8 certain)
             if (gBattleMons[gEffectBattler].status1)
                 break;
             if (gActiveBattler != gBattlersCount)
-                break;
-            if (gBattleMons[gEffectBattler].ability == ABILITY_VITAL_SPIRIT)
                 break;
             if (gBattleMons[gEffectBattler].ability == ABILITY_INSOMNIA)
                 break;
@@ -3375,6 +3376,8 @@ static void Cmd_getexp(void)
                         gBattleMoveDamage += gExpShareExp;
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+                    if (holdEffect == HOLD_EFFECT_CAN_ALWAYS_RUN)
+                        gBattleMoveDamage = (gBattleMoveDamage * 0);
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
 
@@ -6833,8 +6836,7 @@ static void Cmd_jumpifcantmakeasleep(void)
     {
         gBattlescriptCurrInstr = jumpPtr;
     }
-    else if (gBattleMons[gBattlerTarget].ability == ABILITY_INSOMNIA
-            || gBattleMons[gBattlerTarget].ability == ABILITY_VITAL_SPIRIT)
+    else if (gBattleMons[gBattlerTarget].ability == ABILITY_INSOMNIA)
     {
         gLastUsedAbility = gBattleMons[gBattlerTarget].ability;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STAYED_AWAKE_USING;
@@ -7612,6 +7614,7 @@ static void Cmd_weatherdamage(void)
                 && gBattleMons[gBattlerAttacker].types[1] != TYPE_STEEL
                 && gBattleMons[gBattlerAttacker].types[1] != TYPE_GROUND
                 && gBattleMons[gBattlerAttacker].ability != ABILITY_SAND_VEIL
+                && gBattleMons[gBattlerAttacker].ability != ABILITY_ROUGH_SKIN
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERGROUND)
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER))
             {
@@ -7627,6 +7630,7 @@ static void Cmd_weatherdamage(void)
         if (gBattleWeather & B_WEATHER_HAIL)
         {
             if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_ICE)
+                && gBattleMons[gBattlerAttacker].ability != ABILITY_ROUGH_SKIN
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERGROUND)
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER))
             {
@@ -8211,6 +8215,7 @@ static bool8 IsInvalidForSleepTalkOrAssist(u16 move)
     if (move == MOVE_NONE
      || move == MOVE_SLEEP_TALK
      || move == MOVE_ASSIST
+     || move == MOVE_REST
      || move == MOVE_MIRROR_MOVE
      || move == MOVE_METRONOME)
         return TRUE;

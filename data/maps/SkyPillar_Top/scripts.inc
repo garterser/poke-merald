@@ -55,11 +55,17 @@ SkyPillar_Top_EventScript_Rayquaza::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SkyPillar_Top_EventScript_RanFromRayquaza
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SkyPillar_Top_EventScript_RanFromRayquaza
 	setflag FLAG_DEFEATED_RAYQUAZA
+	clearflag FLAG_CELEBI
+	clearflag FLAG_JIRACHI
+	clearflag FLAG_MEWTWO
 	releaseall
 	end
 
 SkyPillar_Top_EventScript_DefeatedRayquaza::
 	setflag FLAG_DEFEATED_RAYQUAZA
+	clearflag FLAG_CELEBI
+	clearflag FLAG_JIRACHI
+	clearflag FLAG_MEWTWO
 	goto SkyPillar_Top_EventScript_DefeatedRayquaza2
 	end
 

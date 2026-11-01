@@ -54,7 +54,7 @@
 #define NIGHT_EVO_HOUR_BEGIN     0
 #define NIGHT_EVO_HOUR_END       12
 
-#define FRIENDSHIP_EVO_THRESHOLD 220
+#define FRIENDSHIP_EVO_THRESHOLD 200
 
 struct SpeciesItem
 {
@@ -3183,7 +3183,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
 
     // Apply boosts from hold items
     if (attackerHoldEffect == HOLD_EFFECT_CHOICE_BAND)
-        attack = (150 * attack) / 100;
+        { attack = (150 * attack) / 100;
+        spAttack = (150 * spAttack) / 100;}
     if (attackerHoldEffect == HOLD_EFFECT_SOUL_DEW && !(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER)) && (attacker->species == SPECIES_LATIAS || attacker->species == SPECIES_LATIOS))
         spAttack = (150 * spAttack) / 100;
     if (defenderHoldEffect == HOLD_EFFECT_SOUL_DEW && !(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER)) && (defender->species == SPECIES_LATIAS || defender->species == SPECIES_LATIOS))
@@ -3202,12 +3203,21 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     // Apply abilities / field sports
     if (defender->ability == ABILITY_THICK_FAT && (type == TYPE_FIRE || type == TYPE_ICE))
         spAttack /= 2;
+    if (defender->ability == ABILITY_SHELL_ARMOR && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT))
+        { defense = (150 * defense) / 100;
+        spDefense = (150 * spDefense) / 100; }
+    if (defender->ability == ABILITY_MINUS && defender->hp >= (defender->maxHP / 3 * 2))
+        { defense = (150 * defense) / 100;
+        spDefense = (150 * spDefense) / 100; }
     if (attacker->ability == ABILITY_HUSTLE)
         attack = (150 * attack) / 100;
     if (attacker->ability == ABILITY_PLUS && ABILITY_ON_FIELD2(ABILITY_MINUS))
         spAttack = (150 * spAttack) / 100;
     if (attacker->ability == ABILITY_MINUS && ABILITY_ON_FIELD2(ABILITY_PLUS))
         spAttack = (150 * spAttack) / 100;
+    if (attacker->ability == ABILITY_RUN_AWAY && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT))
+        { attack = (120 * attack) / 90;
+        spAttack = (120 * spAttack) / 90; }
     if (attacker->ability == ABILITY_GUTS && attacker->status1)
         attack = (150 * attack) / 100;
     if (defender->ability == ABILITY_MARVEL_SCALE && defender->status1)
@@ -3222,7 +3232,9 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         gBattleMovePower = (150 * gBattleMovePower) / 100;
     if (type == TYPE_WATER && attacker->ability == ABILITY_TORRENT && attacker->hp <= (attacker->maxHP / 3))
         gBattleMovePower = (150 * gBattleMovePower) / 100;
-    if (type == TYPE_BUG && attacker->ability == ABILITY_SWARM && attacker->hp <= (attacker->maxHP / 3))
+    if (type == TYPE_ELECTRIC && attacker->ability == ABILITY_PLUS && attacker->hp <= (attacker->maxHP / 3))
+        gBattleMovePower = (150 * gBattleMovePower) / 100;
+    if (type == TYPE_BUG && attacker->ability == ABILITY_SWARM)
         gBattleMovePower = (150 * gBattleMovePower) / 100;
 
     // Self-destruct / Explosion cut defense in half

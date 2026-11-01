@@ -73,3 +73,22 @@ NavelRock_Bottom_EventScript_RanFromLugia::
 	setvar VAR_0x8004, SPECIES_LUGIA
 	goto Common_EventScript_LegendaryFlewAway
 	end
+
+NavelRock_Bottom_EventScript_ArticunoStone::
+	lockall
+	msgbox NavelRock_Bottom_Text_ArticunoConfirm, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, NavelRock_Bottom_EventScript_ArticunoRefuse
+	setwildbattle SPECIES_ARTICUNO, 60
+	dowildbattle
+	setflag FLAG_ARTICUNO
+	removeobject VAR_LAST_TALKED
+	releaseall
+	end
+
+NavelRock_Bottom_EventScript_ArticunoRefuse::
+	releaseall
+	end
+
+NavelRock_Bottom_Text_ArticunoConfirm:
+	.string "A SNOWFLAKE is engraved on the stone.\n"
+	.string "Touch it?$"

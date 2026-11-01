@@ -285,6 +285,12 @@ const union {
         .THIEF = TRUE,
         .SKILL_SWAP = TRUE,
         .FLASH = TRUE,
+        .ICE_BEAM = TRUE,
+        .FLAMETHROWER = TRUE,
+        .THUNDERBOLT = TRUE,
+        .BLIZZARD = TRUE,
+        .THUNDER = TRUE,
+        .FIRE_BLAST = TRUE,
     } },
 
     [SPECIES_WEEDLE] = { .learnset = {
@@ -314,6 +320,7 @@ const union {
         .THIEF = TRUE,
         .CUT = TRUE,
         .ROCK_SMASH = TRUE,
+        .IRON_TAIL = TRUE,
     } },
 
     [SPECIES_PIDGEY] = { .learnset = {
@@ -2608,6 +2615,7 @@ const union {
         .SUNNY_DAY = TRUE,
         .ICE_BEAM = TRUE,
         .BLIZZARD = TRUE,
+        .SHADOW_BALL = TRUE,
         .PROTECT = TRUE,
         .FRUSTRATION = TRUE,
         .IRON_TAIL = TRUE,
@@ -2637,6 +2645,7 @@ const union {
         .SUNNY_DAY = TRUE,
         .ICE_BEAM = TRUE,
         .BLIZZARD = TRUE,
+        .SHADOW_BALL = TRUE,
         .HYPER_BEAM = TRUE,
         .PROTECT = TRUE,
         .FRUSTRATION = TRUE,
@@ -4311,6 +4320,7 @@ const union {
         .GIGA_DRAIN = TRUE,
         .SAFEGUARD = TRUE,
         .FRUSTRATION = TRUE,
+        .DRAGON_CLAW = TRUE,
         .SOLAR_BEAM = TRUE,
         .RETURN = TRUE,
         .DIG = TRUE,
@@ -4337,6 +4347,7 @@ const union {
         .GIGA_DRAIN = TRUE,
         .SAFEGUARD = TRUE,
         .FRUSTRATION = TRUE,
+        .DRAGON_CLAW = TRUE,
         .SOLAR_BEAM = TRUE,
         .RETURN = TRUE,
         .DIG = TRUE,
@@ -4350,6 +4361,7 @@ const union {
         .ATTRACT = TRUE,
         .THIEF = TRUE,
         .FLASH = TRUE,
+        .WATERFALL = TRUE,
     } },
 
     [SPECIES_SPINARAK] = { .learnset = {
@@ -4926,6 +4938,7 @@ const union {
         .FOCUS_PUNCH = TRUE,
         .WATER_PULSE = TRUE,
         .TOXIC = TRUE,
+        .BULK_UP = TRUE,
         .HIDDEN_POWER = TRUE,
         .SUNNY_DAY = TRUE,
         .TAUNT = TRUE,
@@ -5223,6 +5236,22 @@ const union {
     } },
 
     [SPECIES_UNOWN] = { .learnset = {
+        .TOXIC = TRUE,
+        .HIDDEN_POWER = TRUE,
+        .PROTECT = TRUE,
+        .FRUSTRATION = TRUE,
+        .RETURN = TRUE,
+        .DOUBLE_TEAM = TRUE,
+        .FACADE = TRUE,
+        .SECRET_POWER = TRUE,
+        .REST = TRUE,
+        .ATTRACT = TRUE,
+        .TAUNT = TRUE,
+        .LIGHT_SCREEN = TRUE,
+        .REFLECT = TRUE,
+        .SAFEGUARD = TRUE,
+        .TORMENT = TRUE,
+        .SKILL_SWAP = TRUE,
     } },
 
     [SPECIES_WOBBUFFET] = { .learnset = {

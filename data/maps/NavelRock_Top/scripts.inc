@@ -112,3 +112,22 @@ NavelRock_Top_Movement_HoOhAppear:
 	walk_in_place_down
 	walk_in_place_down
 	step_end
+	
+NavelRock_Top_EventScript_SuicuneStone::
+	lockall
+	msgbox NavelRock_Top_Text_SuicuneConfirm, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, NavelRock_Top_EventScript_SuicuneRefuse
+	setwildbattle SPECIES_SUICUNE, 60
+	dowildbattle
+	setflag FLAG_SUICUNE
+	removeobject VAR_LAST_TALKED
+	releaseall
+	end
+
+NavelRock_Top_EventScript_SuicuneRefuse::
+	releaseall
+	end
+
+NavelRock_Top_Text_SuicuneConfirm:
+	.string "A WAVE is engraved on the stone.\n"
+	.string "Touch it?$"

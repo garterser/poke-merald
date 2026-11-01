@@ -277,8 +277,8 @@ const u8 gVileplumePokedexText[] = _(
 const u8 gParasPokedexText[] = _(
     "A PARAS has parasitic tochukaso\n"
     "mushrooms growing on its back. They grow\n"
-    "by drawing nutrients from the host. They\n"
-    "are valued as a medicine for long life.");
+    "by drawing nutrients from the host. In\n"
+    "turn, the host becomes numb to great pain.");
 
 const u8 gParasectPokedexText[] = _(
     "PARASECT are known to infest the roots of\n"

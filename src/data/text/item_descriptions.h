@@ -790,8 +790,8 @@ static const u8 sDeepSeaScaleDesc[] = _(
 
 static const u8 sSmokeBallDesc[] = _(
     "A hold item that\n"
-    "assures fleeing\n"
-    "from wild POKéMON.");
+    "assures fleeing.\n"
+    "Nulls experience.");
 
 static const u8 sEverstoneDesc[] = _(
     "A wondrous hold\n"
@@ -905,7 +905,7 @@ static const u8 sDragonFangDesc[] = _(
 
 static const u8 sSilkScarfDesc[] = _(
     "A hold item that\n"
-    "raises the power of\n"
+    "greatly boosts\n"
     "NORMAL-type moves.");
 
 static const u8 sUpGradeDesc[] = _(

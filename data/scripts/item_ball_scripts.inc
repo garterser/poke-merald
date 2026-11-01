@@ -622,7 +622,7 @@ VictoryRoad_B2F_EventScript_ItemFullHeal::
 	finditem ITEM_FULL_HEAL
 	end
 
-ArtisanCave_B1F_EventScript_ItemHPUp::
+ArtisanCave_B1F_EventScript_Mystic::
 	finditem ITEM_HP_UP
 	end
 

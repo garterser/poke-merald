@@ -457,16 +457,29 @@ SlateportCity_EventScript_DollClerk::
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemartdecoration SlateportCity_PokemartDecor_Dolls
+	pokemart SlateportCity_PokemartDecor_Battle
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
 	.align 2
-SlateportCity_PokemartDecor_Dolls:
-	.2byte DECOR_AZURILL_DOLL
-	.2byte DECOR_MARILL_DOLL
-	.2byte DECOR_SKITTY_DOLL
+SlateportCity_PokemartDecor_Battle:
+	.2byte ITEM_CHOICE_BAND
+	.2byte ITEM_LEFTOVERS
+	.2byte ITEM_SHELL_BELL
+	.2byte ITEM_BRIGHT_POWDER
+	.2byte ITEM_KINGS_ROCK
+	.2byte ITEM_FOCUS_BAND
+	.2byte ITEM_SCOPE_LENS
+	.2byte ITEM_QUICK_CLAW
+	.2byte ITEM_STICK
+	.2byte ITEM_THICK_CLUB
+	.2byte ITEM_LIGHT_BALL
+	.2byte ITEM_DEEP_SEA_SCALE
+	.2byte ITEM_DEEP_SEA_TOOTH
+	.2byte ITEM_METAL_POWDER
+	.2byte ITEM_MACHO_BRACE
+	.2byte ITEM_SMOKE_BALL
 	pokemartlistend
 
 SlateportCity_EventScript_ComeBackWithSecretPower::

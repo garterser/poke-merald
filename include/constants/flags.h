@@ -656,15 +656,15 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_UNUSED_0x264  0x264 // Unused Flag
-#define FLAG_UNUSED_0x265  0x265 // Unused Flag
-#define FLAG_UNUSED_0x266  0x266 // Unused Flag
-#define FLAG_UNUSED_0x267  0x267 // Unused Flag
-#define FLAG_UNUSED_0x268  0x268 // Unused Flag
-#define FLAG_UNUSED_0x269  0x269 // Unused Flag
-#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
-#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
-#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
+#define FLAG_ARTICUNO      0x264 // Articuno Encounter Flag
+#define FLAG_ZAPDOS        0x265 // Zapdos Encounter Flag
+#define FLAG_MOLTRES       0x266 // Moltres Encounter Flag
+#define FLAG_RAIKOU        0x267 // Raikou Encounter Flag
+#define FLAG_ENTEI         0x268 // Entei Encounter Flag
+#define FLAG_SUICUNE       0x269 // Suicune Encounter Flag
+#define FLAG_MEWTWO        0x26A // Mewtwo Encounter Flag
+#define FLAG_CELEBI        0x26B // Celebi Encounter Flag
+#define FLAG_JIRACHI       0x26C // Jirachi Encounter Flag
 #define FLAG_UNUSED_0x26D  0x26D // Unused Flag
 #define FLAG_UNUSED_0x26E  0x26E // Unused Flag
 #define FLAG_UNUSED_0x26F  0x26F // Unused Flag
@@ -1212,7 +1212,7 @@
 #define FLAG_ITEM_ROUTE_134_STAR_PIECE                              0x487
 #define FLAG_ITEM_ROUTE_114_ENERGY_POWDER                           0x488
 #define FLAG_ITEM_ROUTE_115_PP_UP                                   0x489
-#define FLAG_ITEM_ARTISAN_CAVE_B1F_HP_UP                            0x48A
+#define FLAG_ITEM_ARTISAN_CAVE_B1F_MYSTIC                           0x48A
 #define FLAG_ITEM_ARTISAN_CAVE_1F_CARBOS                            0x48B
 #define FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_MAX_ELIXIR                    0x48C
 #define FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_FULL_RESTORE                  0x48D

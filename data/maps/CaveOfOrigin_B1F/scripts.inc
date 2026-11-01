@@ -54,6 +54,25 @@ CaveOfOrigin_B1F_EventScript_AtSkyPillar::
 	fadescreen FADE_FROM_BLACK
 	release
 	end
+	
+CaveOfOrigin_B1F_EventScript_JirachiStone::
+	lockall
+	msgbox CaveOfOrigin_B1F_Text_JirachiConfirm, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, CaveOfOrigin_B1F_EventScript_JirachiRefuse
+	setwildbattle SPECIES_MEWTWO, 55
+	dowildbattle
+	setflag FLAG_MEWTWO
+	removeobject VAR_LAST_TALKED
+	releaseall
+	end
+
+CaveOfOrigin_B1F_EventScript_JirachiRefuse::
+	releaseall
+	end
+
+CaveOfOrigin_B1F_Text_JirachiConfirm:
+	.string "A STAR is engraved on the stone.\n"
+	.string "Touch it?$"
 
 CaveOfOrigin_B1F_Text_WallaceStory:
 	.string "Ah, so you are {PLAYER}{KUN}?\n"

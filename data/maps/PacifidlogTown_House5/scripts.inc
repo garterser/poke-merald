@@ -4,9 +4,7 @@ PacifidlogTown_House5_MapScripts::
 PacifidlogTown_House5_EventScript_MirageIslandWatcher::
 	lock
 	faceplayer
-	specialvar VAR_RESULT, IsMirageIslandPresent
-	goto_if_eq VAR_RESULT, TRUE, PacifidlogTown_House5_EventScript_MirageIslandPresent
-	msgbox PacifidlogTown_House5_Text_CantSeeMirageIslandToday, MSGBOX_DEFAULT
+	msgbox PacifidlogTown_House5_Text_CanSeeMirageIslandToday, MSGBOX_DEFAULT
 	release
 	end
 
@@ -23,8 +21,8 @@ PacifidlogTown_House5_Text_CantSeeMirageIslandToday:
 	.string "I can't see MIRAGE ISLAND today…$"
 
 PacifidlogTown_House5_Text_CanSeeMirageIslandToday:
-	.string "Oh! Oh my!\n"
-	.string "I can see MIRAGE ISLAND today!$"
+	.string "MIRAGE ISLAND is only visible\n"
+	.string "to few.$"
 
 PacifidlogTown_House5_Text_MirageIslandAppearDependingOnWeather:
 	.string "MIRAGE ISLAND…\p"

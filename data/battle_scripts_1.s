@@ -4196,6 +4196,12 @@ BattleScript_CuteCharmActivates::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_StenchActivates::
+	status2animation BS_ATTACKER, STATUS2_CONFUSION
+	printstring STRINGID_PKMNWASCONFUSED
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_ApplySecondaryEffect::
 	waitstate
 	seteffectsecondary

@@ -137,7 +137,7 @@ SootopolisCity_EventScript_SetWallaceLeft::
 	return
 
 SootopolisCity_EventScript_SetExpertBlockCaveEntrance::
-	setobjectxyperm LOCALID_SOOTOPOLIS_EXPERT, 31, 18
+	setobjectxyperm LOCALID_SOOTOPOLIS_EXPERT, 30, 18
 	return
 
 SootopolisCity_OnWarp:
