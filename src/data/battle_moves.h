@@ -2097,7 +2097,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     {
         .effect = EFFECT_TRI_ATTACK,
         .power = 80,
-        .type = TYPE_NORMAL,
+        .type = TYPE_DRAGON,
         .accuracy = 100,
         .pp = 10,
         .secondaryEffectChance = 20,
@@ -2823,12 +2823,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_PRESENT] =
     {
-        .effect = EFFECT_PRESENT,
-        .power = 1,
-        .type = TYPE_NORMAL,
-        .accuracy = 90,
+        .effect = EFFECT_TRI_ATTACK,
+        .power = 60,
+        .type = TYPE_ICE,
+        .accuracy = 100,
         .pp = 15,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,

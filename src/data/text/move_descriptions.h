@@ -155,7 +155,7 @@ static const u8 sDoubleEdgeDescription[] = _(
 
 static const u8 sTailWhipDescription[] = _(
     "Wags the tail to lower the\n"
-    "foe's DEFENSE.");
+    "foe's DEFENSE. Moves first.");
 
 static const u8 sPoisonStingDescription[] = _(
     "A toxic attack with barbs,\n"
@@ -170,7 +170,7 @@ static const u8 sPinMissileDescription[] = _(
     "strike. may Paralyze.");
 
 static const u8 sLeerDescription[] = _(
-    "Frightens the foe with a\n"
+    "Quickly hits foe with a\n"
     "leer to lower DEFENSE.");
 
 static const u8 sBiteDescription[] = _(
@@ -179,7 +179,7 @@ static const u8 sBiteDescription[] = _(
 
 static const u8 sGrowlDescription[] = _(
     "Growls cutely to reduce the\n"
-    "foe's ATTACK.");
+    "foe's ATTACK. Moves first.");
 
 static const u8 sRoarDescription[] = _(
     "Makes the foe flee to end\n"
@@ -639,7 +639,7 @@ static const u8 sSharpenDescription[] = _(
 
 static const u8 sConversionDescription[] = _(
     "Changes the user's type\n"
-    "into a known move's type.");
+    "to the first move's type.");
 
 static const u8 sTriAttackDescription[] = _(
     "Fires three types of beams\n"
@@ -867,7 +867,7 @@ static const u8 sReturnDescription[] = _(
 
 static const u8 sPresentDescription[] = _(
     "A gift in the form of a\n"
-    "bomb. May restore HP.");
+    "bomb. Inflicts status.");
 
 static const u8 sFrustrationDescription[] = _(
     "An attack that is stronger\n"
@@ -1071,7 +1071,7 @@ static const u8 sNaturePowerDescription[] = _(
 
 static const u8 sChargeDescription[] = _(
     "Charges power to boost the\n"
-    "electric move used next.");
+    "special move used next.");
 
 static const u8 sTauntDescription[] = _(
     "Taunts the foe into only\n"

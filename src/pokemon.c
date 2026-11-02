@@ -3356,6 +3356,43 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
                 }
             }
 
+            // Hail weakens Fire, Fighting, Steel and Rock
+            if (gBattleWeather & B_WEATHER_HAIL)
+            {
+                switch (type)
+                {
+                case TYPE_FIRE:
+                    damage /= 2;
+                    break;
+                case TYPE_FIGHTING:
+                    damage /= 2;
+                    break;
+                case TYPE_STEEL:
+                    damage /= 2;
+                    break;
+                case TYPE_ROCK:
+                    damage /= 2;
+                    break;
+                }
+            }
+
+            // Sand boosts Steel, Rock and Ground
+            if (gBattleWeather & B_WEATHER_SANDSTORM)
+            {
+                switch (type)
+                {
+                case TYPE_GROUND:
+                    damage = (13 * damage) / 10;
+                    break;
+                case TYPE_ROCK:
+                    damage = (13 * damage) / 10;
+                    break;
+                case TYPE_STEEL:
+                    damage = (13 * damage) / 10;
+                    break;
+                }
+            }
+
             // Any weather except sun weakens solar beam
             if ((gBattleWeather & (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_HAIL)) && gCurrentMove == MOVE_SOLAR_BEAM)
                 damage /= 2;

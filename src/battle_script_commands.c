@@ -1298,7 +1298,15 @@ static void Cmd_damagecalc(void)
                                             gBattleStruct->dynamicMoveType, gBattlerAttacker, gBattlerTarget);
     gBattleMoveDamage = gBattleMoveDamage * gCritMultiplier * gBattleScripting.dmgMultiplier;
 
-    if (gStatuses3[gBattlerAttacker] & STATUS3_CHARGED_UP && gBattleMoves[gCurrentMove].type == TYPE_ELECTRIC)
+    if (gStatuses3[gBattlerAttacker] & STATUS3_CHARGED_UP && ( 
+        gBattleMoves[gCurrentMove].type == TYPE_ELECTRIC || 
+        gBattleMoves[gCurrentMove].type == TYPE_WATER || 
+        gBattleMoves[gCurrentMove].type == TYPE_ICE || 
+        gBattleMoves[gCurrentMove].type == TYPE_FIRE || 
+        gBattleMoves[gCurrentMove].type == TYPE_DARK || 
+        gBattleMoves[gCurrentMove].type == TYPE_PSYCHIC || 
+        gBattleMoves[gCurrentMove].type == TYPE_DRAGON || 
+        gBattleMoves[gCurrentMove].type == TYPE_GRASS ) )
         gBattleMoveDamage *= 2;
     if (gProtectStructs[gBattlerAttacker].helpingHand)
         gBattleMoveDamage = gBattleMoveDamage * 15 / 10;
@@ -1315,7 +1323,15 @@ void AI_CalcDmg(u8 attacker, u8 defender)
     gDynamicBasePower = 0;
     gBattleMoveDamage = gBattleMoveDamage * gCritMultiplier * gBattleScripting.dmgMultiplier;
 
-    if (gStatuses3[attacker] & STATUS3_CHARGED_UP && gBattleMoves[gCurrentMove].type == TYPE_ELECTRIC)
+    if (gStatuses3[gBattlerAttacker] & STATUS3_CHARGED_UP && ( 
+        gBattleMoves[gCurrentMove].type == TYPE_ELECTRIC || 
+        gBattleMoves[gCurrentMove].type == TYPE_WATER || 
+        gBattleMoves[gCurrentMove].type == TYPE_ICE || 
+        gBattleMoves[gCurrentMove].type == TYPE_FIRE || 
+        gBattleMoves[gCurrentMove].type == TYPE_DARK || 
+        gBattleMoves[gCurrentMove].type == TYPE_PSYCHIC || 
+        gBattleMoves[gCurrentMove].type == TYPE_DRAGON || 
+        gBattleMoves[gCurrentMove].type == TYPE_GRASS ) )
         gBattleMoveDamage *= 2;
     if (gProtectStructs[attacker].helpingHand)
         gBattleMoveDamage = gBattleMoveDamage * 15 / 10;
@@ -7387,66 +7403,22 @@ static void Cmd_forcerandomswitch(void)
     }
 }
 
-// Randomly changes user's type to one of its moves' type
+// Changes user's type to its first moves type.
 static void Cmd_tryconversiontypechange(void)
 {
-    u8 validMoves = 0;
-    u8 moveChecked;
     u8 moveType;
 
-    while (validMoves < MAX_MON_MOVES)
+    moveType = gBattleMoves[gBattleMons[gBattlerAttacker].moves[0]].type;
+    if (moveType == TYPE_MYSTERY)
     {
-        if (gBattleMons[gBattlerAttacker].moves[validMoves] == MOVE_NONE)
-            break;
-
-        validMoves++;
+        if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
+            moveType = TYPE_GHOST;
+        else
+            moveType = TYPE_NORMAL;
     }
-
-    for (moveChecked = 0; moveChecked < validMoves; moveChecked++)
-    {
-        moveType = gBattleMoves[gBattleMons[gBattlerAttacker].moves[moveChecked]].type;
-
-        if (moveType == TYPE_MYSTERY)
-        {
-            if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
-                moveType = TYPE_GHOST;
-            else
-                moveType = TYPE_NORMAL;
-        }
-        if (moveType != gBattleMons[gBattlerAttacker].types[0]
-            && moveType != gBattleMons[gBattlerAttacker].types[1])
-        {
-            break;
-        }
-    }
-
-    if (moveChecked == validMoves)
-    {
-        gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
-    }
-    else
-    {
-        do
-        {
-            while ((moveChecked = MOD(Random(), MAX_MON_MOVES)) >= validMoves);
-
-            moveType = gBattleMoves[gBattleMons[gBattlerAttacker].moves[moveChecked]].type;
-
-            if (moveType == TYPE_MYSTERY)
-            {
-                if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
-                    moveType = TYPE_GHOST;
-                else
-                    moveType = TYPE_NORMAL;
-            }
-        }
-        while (moveType == gBattleMons[gBattlerAttacker].types[0] || moveType == gBattleMons[gBattlerAttacker].types[1]);
-
-        SET_BATTLER_TYPE(gBattlerAttacker, moveType);
-        PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
-
-        gBattlescriptCurrInstr += 5;
-    }
+    SET_BATTLER_TYPE(gBattlerAttacker, moveType);
+    PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
+    gBattlescriptCurrInstr += 5;
 }
 
 static void Cmd_givepaydaymoney(void)
@@ -7630,7 +7602,7 @@ static void Cmd_weatherdamage(void)
         if (gBattleWeather & B_WEATHER_HAIL)
         {
             if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_ICE)
-                && gBattleMons[gBattlerAttacker].ability != ABILITY_ROUGH_SKIN
+                && gBattleMons[gBattlerAttacker].ability != ABILITY_ROUGH_SKIN      
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERGROUND)
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER))
             {
