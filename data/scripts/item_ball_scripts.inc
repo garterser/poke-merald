@@ -2,6 +2,8 @@ Route102_EventScript_ItemPotion::
 	finditem ITEM_POTION
 	end
 
+	// Change back later
+
 Route103_EventScript_ItemGuardSpec::
 	finditem ITEM_GUARD_SPEC
 	end

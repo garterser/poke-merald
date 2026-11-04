@@ -724,8 +724,8 @@ static const u8 sWhiteHerbDesc[] = _(
     "lowered stat.");
 
 static const u8 sMachoBraceDesc[] = _(
-    "A hold item that\n"
-    "promotes growth,\n"
+    "Promotes growth.\n"
+    "Increases ATTACK,\n"
     "but reduces SPEED.");
 
 static const u8 sExpShareDesc[] = _(
@@ -794,9 +794,9 @@ static const u8 sSmokeBallDesc[] = _(
     "Nulls experience.");
 
 static const u8 sEverstoneDesc[] = _(
-    "A wondrous hold\n"
-    "item that prevents\n"
-    "evolution.");
+    "Prevents evolution.\n"
+    "Boosts defence if\n"
+    "holder can evolve.");
 
 static const u8 sFocusBandDesc[] = _(
     "A hold item that\n"

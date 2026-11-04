@@ -472,6 +472,7 @@ SlateportCity_PokemartDecor_Battle:
 	.2byte ITEM_FOCUS_BAND
 	.2byte ITEM_SCOPE_LENS
 	.2byte ITEM_QUICK_CLAW
+	.2byte ITEM_EVERSTONE
 	.2byte ITEM_STICK
 	.2byte ITEM_THICK_CLUB
 	.2byte ITEM_LIGHT_BALL
