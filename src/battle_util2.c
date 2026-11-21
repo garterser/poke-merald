@@ -149,7 +149,7 @@ u32 BattlePalace_TryEscapeStatus(u8 battler)
                     u32 toSub;
 
                     if (gBattleMons[battler].ability == ABILITY_EARLY_BIRD)
-                        toSub = 2;
+                        toSub = 3;
                     else
                         toSub = 1;
 

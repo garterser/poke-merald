@@ -820,8 +820,8 @@ static const u8 sMetalCoatDesc[] = _(
 
 static const u8 sLeftoversDesc[] = _(
     "A hold item that\n"
-    "gradually restores\n"
-    "HP in battle.");
+    "heals POISON and\n"
+    "BUG types.");
 
 static const u8 sDragonScaleDesc[] = _(
     "A strange scale\n"

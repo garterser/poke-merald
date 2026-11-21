@@ -2271,7 +2271,7 @@ BattleScript_EffectSmellingsalt::
 	jumpifstatus BS_TARGET, STATUS1_PARALYSIS, BattleScript_SmellingsaltDoubleDmg
 	goto BattleScript_EffectHit
 BattleScript_SmellingsaltDoubleDmg:
-	setbyte sDMG_MULTIPLIER, 2
+	setbyte sDMG_MULTIPLIER, 3
 	goto BattleScript_EffectHit
 
 BattleScript_EffectFollowMe::

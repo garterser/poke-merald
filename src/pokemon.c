@@ -3186,8 +3186,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         { attack = (150 * attack) / 100;
         spAttack = (150 * spAttack) / 100;}
     if (attackerHoldEffect == HOLD_EFFECT_MACHO_BRACE)
-        { attack = (125 * attack) / 100;
-        spAttack = (125 * spAttack) / 100;}
+        { attack = (51 * attack) / 40;
+        spAttack = (51 * spAttack) / 40;}
     if (attackerHoldEffect == HOLD_EFFECT_SOUL_DEW && !(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER)) && (attacker->species == SPECIES_LATIAS || attacker->species == SPECIES_LATIOS))
         spAttack = (150 * spAttack) / 100;
     if (defenderHoldEffect == HOLD_EFFECT_SOUL_DEW && !(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER)) && (defender->species == SPECIES_LATIAS || defender->species == SPECIES_LATIOS))
@@ -3382,6 +3382,13 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     // Apply abilities / field sports
     if (defender->ability == ABILITY_THICK_FAT && (type == TYPE_FIRE || type == TYPE_ICE))
         spAttack /= 2;
+    if (defender->ability == ABILITY_DROUGHT && (type == TYPE_WATER))
+        spAttack /= 4;
+    if (defender->ability == ABILITY_LIGHTNING_ROD && (type == TYPE_ELECTRIC || type == TYPE_GROUND))
+        { attack /= 2;
+        spAttack /= 2; }
+    if (defender->ability == ABILITY_ARENA_TRAP && (type == TYPE_WATER))
+        spAttack /= 2;
     if (defender->ability == ABILITY_SHELL_ARMOR && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT))
         { defense = (150 * defense) / 100;
         spDefense = (150 * spDefense) / 100; }
@@ -3414,6 +3421,10 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (type == TYPE_ELECTRIC && attacker->ability == ABILITY_PLUS && attacker->hp <= (attacker->maxHP / 3))
         gBattleMovePower = (150 * gBattleMovePower) / 100;
     if (type == TYPE_BUG && attacker->ability == ABILITY_SWARM)
+        gBattleMovePower = (150 * gBattleMovePower) / 100;
+    if (type == TYPE_NORMAL && attacker->ability == ABILITY_COLOR_CHANGE)
+        gBattleMovePower = (150 * gBattleMovePower) / 100;
+    if (type == TYPE_STEEL && attacker->ability == ABILITY_MAGNET_PULL)
         gBattleMovePower = (150 * gBattleMovePower) / 100;
 
     // Self-destruct / Explosion cut defense in half

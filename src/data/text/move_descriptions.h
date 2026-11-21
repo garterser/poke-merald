@@ -50,8 +50,8 @@ static const u8 sGuillotineDescription[] = _(
     "that may raise ATTACK.");
 
 static const u8 sRazorWindDescription[] = _(
-    "A 2-turn move that strikes\n"
-    "the foe on the 2nd turn.");
+    "Slashes the air fiercely,\n"
+    "sending a shockwave.");
 
 static const u8 sSwordsDanceDescription[] = _(
     "A fighting dance that\n"
@@ -1059,7 +1059,7 @@ static const u8 sFocusPunchDescription[] = _(
 
 static const u8 sSmellingSaltDescription[] = _(
     "Powerful against paralyzed\n"
-    "foes, but also heals them.");
+    "foes, but also cures them.");
 
 static const u8 sFollowMeDescription[] = _(
     "Draws attention to make\n"
@@ -1255,7 +1255,7 @@ static const u8 sFakeTearsDescription[] = _(
 
 static const u8 sAirCutterDescription[] = _(
     "Hacks with razorlike wind.\n"
-    "High critical-hit ratio.");
+    "May lower defence.");
 
 static const u8 sOverheatDescription[] = _(
     "Allows a full-power attack,\n"
