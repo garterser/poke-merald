@@ -5751,7 +5751,6 @@ const union {
         .PROTECT = TRUE,
         .FRUSTRATION = TRUE,
         .EARTHQUAKE = TRUE,
-        .SOLAR_BEAM = TRUE,
         .RETURN = TRUE,
         .DOUBLE_TEAM = TRUE,
         .REFLECT = TRUE,

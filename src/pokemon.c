@@ -3390,11 +3390,15 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (defender->ability == ABILITY_ARENA_TRAP && (type == TYPE_WATER))
         spAttack /= 2;
     if (defender->ability == ABILITY_SHELL_ARMOR && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT))
-        { defense = (150 * defense) / 100;
-        spDefense = (150 * spDefense) / 100; }
+        { defense = (3 * defense) / 2;
+        spDefense = (3 * spDefense) / 2; }
+    if (defender->ability == ABILITY_MAGMA_ARMOR && (gBattleWeather & B_WEATHER_SUN))
+        defense = (7 * defense) / 4;
+    if (defender->ability == ABILITY_WATER_VEIL && (gBattleWeather & B_WEATHER_RAIN))
+        spDefense = (7 * spDefense) / 4;
     if (defender->ability == ABILITY_MINUS && defender->hp >= (defender->maxHP / 3 * 2))
-        { defense = (150 * defense) / 100;
-        spDefense = (150 * spDefense) / 100; }
+        { defense = (3 * defense) / 2;
+        spDefense = (3 * spDefense) / 2; }
     if (attacker->ability == ABILITY_HUSTLE)
         attack = (150 * attack) / 100;
     if (attacker->ability == ABILITY_PLUS && ABILITY_ON_FIELD2(ABILITY_MINUS))
@@ -3402,8 +3406,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (attacker->ability == ABILITY_MINUS && ABILITY_ON_FIELD2(ABILITY_PLUS))
         spAttack = (150 * spAttack) / 100;
     if (attacker->ability == ABILITY_RUN_AWAY && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT))
-        { attack = (120 * attack) / 90;
-        spAttack = (120 * spAttack) / 90; }
+        { attack = (4 * attack) / 3;
+        spAttack = (4 * spAttack) / 3; }
     if (attacker->ability == ABILITY_GUTS && attacker->status1)
         attack = (150 * attack) / 100;
     if (defender->ability == ABILITY_MARVEL_SCALE && defender->status1)
